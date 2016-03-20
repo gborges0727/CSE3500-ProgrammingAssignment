@@ -1,20 +1,48 @@
 // Brute Force algorithm
 import java.util.*;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class bruteForce {
 
 	public static void main(String[] args) {
 
 		/* Code to get input from file (into ArrayList) and 
-		   the desired number to be checked against */
+		   the desired number to be checked against TAKEN FROM
+		   http://stackoverflow.com/questions/3806062/how-to-open-a
+		   -txt-file-and-read-numbers-in-java */
 
-		Scanner input = new Scanner(System.in);
+		Integer desiredNumber = 0;
+		List<Integer> integers = new ArrayList<>();
 
-		// Write check as to if array has -1 at index 0: if so, no solution.
+		try {
+			Path filePath = Paths.get("../CollectionNumbers/listNumbers-1000.txt");
+			Scanner scanner = new Scanner(filePath);
+			while (scanner.hasNext()) {
+    			if (scanner.hasNextInt()) {
+        			integers.add(scanner.nextInt());
+    			} else {
+        			scanner.next();
+    			}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
+		// Parse from list into an array
+		int integerArray[] = new int[integers.size()];
+		for (int i = 0; i < integers.size(); i++) {
+			integerArray[i] = integers.get(i);
+		}
+
+		int[] solution = findSolution(integerArray, desiredNumber);
+		if (solution != null) {
+			System.out.println(solution[0] + " and " + solution[1] + " add to your desired number and exist in the list.");
+		}
 	}
 
-	public int[] findSolution(int[] list, int checkNum) {
+	public static int[] findSolution(int[] list, int checkNum) {
 
 		int[] listIndexSolution = {-1, -1}; // Intialized with -1: if remains -1 after the loop, no solution exists
 		int[] returnArray = {0, 0};
