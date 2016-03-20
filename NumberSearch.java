@@ -36,7 +36,14 @@ public class NumberSearch {
 			integerArray[i] = integers.get(i);
 		}
 
+		// Run bruteForce solution on the list
 		int[] solution = bruteForce(integerArray, desiredNumber);
+		if (solution != null) {
+			System.out.println(solution[0] + " and " + solution[1] + " add to your desired number and exist in the list.");
+		}
+
+		// Run binarySearch solution on the list
+		int[] solution = binarySearch(integerArray, desiredNumber);
 		if (solution != null) {
 			System.out.println(solution[0] + " and " + solution[1] + " add to your desired number and exist in the list.");
 		}
@@ -64,5 +71,9 @@ public class NumberSearch {
 		}
 
 		return null;
+	}
+
+	public static int[] binarySearch(int[] list, int checkNum) {
+		
 	}
 }
