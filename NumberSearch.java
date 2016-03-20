@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class bruteForce {
+public class NumberSearch {
 
 	public static void main(String[] args) {
 
@@ -36,13 +36,13 @@ public class bruteForce {
 			integerArray[i] = integers.get(i);
 		}
 
-		int[] solution = findSolution(integerArray, desiredNumber);
+		int[] solution = bruteForce(integerArray, desiredNumber);
 		if (solution != null) {
 			System.out.println(solution[0] + " and " + solution[1] + " add to your desired number and exist in the list.");
 		}
 	}
 
-	public static int[] findSolution(int[] list, int checkNum) {
+	public static int[] bruteForce(int[] list, int checkNum) {
 
 		int[] listIndexSolution = {-1, -1}; // Intialized with -1: if remains -1 after the loop, no solution exists
 		int[] returnArray = {0, 0};
