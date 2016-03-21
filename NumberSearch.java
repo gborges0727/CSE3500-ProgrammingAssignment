@@ -74,6 +74,27 @@ public class NumberSearch {
 	}
 
 	public static int[] binarySearch(int[] list, int checkNum) {
+		Arrays.sort(list);
+		int[] solution = new int[2];
+		int frontPointer = 0;
+		int backPointer = list.length - 1;
+
+		while (frontPointer < backPointer) {
+			int pointerSum = list[frontPointer] + list[backPointer];
+			if (pointerSum == checkNum) {
+				solution[0] = list[frontPointer];
+				solution[1] = list[backPointer];
+				return solution;
+			}
+			else if (pointerSum < checkNum) {
+				frontPointer++;
+			}
+			else {
+				backPointer--;
+			}
+		}
+
 		return null;
 	}
 }
+
