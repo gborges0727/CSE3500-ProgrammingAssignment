@@ -17,8 +17,8 @@ public class NumberSearch {
 		List<Integer> integers = new ArrayList<>();
 
 		try {
-			Path filePath = Paths.get("../CollectionNumbers/listNumbers-1000.txt");
-			Scanner scanner = new Scanner(filePath);
+			File file = new File("CollectionNumbers/listNumbers-10000.txt");
+			Scanner scanner = new Scanner(file);
 			while (scanner.hasNext()) {
     			if (scanner.hasNextInt()) {
         			integers.add(scanner.nextInt());
