@@ -8,11 +8,6 @@ public class NumberSearch {
 
 	public static void main(String[] args) {
 
-		/* Code to get input from file (into ArrayList) and 
-		   the desired number to be checked against TAKEN FROM
-		   http://stackoverflow.com/questions/3806062/how-to-open-a
-		   -txt-file-and-read-numbers-in-java */
-
 		Integer desiredNumber = 0;
 		List<Integer> integers = new ArrayList<>();
 
@@ -62,6 +57,7 @@ public class NumberSearch {
 					return returnArray;
 				}
 			}
+			listPointer++;
 		}
 
 		if (listIndexSolution[0] != -1) {
