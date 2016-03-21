@@ -8,7 +8,7 @@ public class NumberSearch {
 
 	public static void main(String[] args) {
 
-		Integer desiredNumber = 0;
+		Integer desiredNumber = 99832;
 		List<Integer> integers = new ArrayList<>();
 
 		try {
@@ -54,15 +54,14 @@ public class NumberSearch {
 				if(list[listPointer] + list[i] == checkNum) {
 					listIndexSolution[0] = listPointer;
 					listIndexSolution[1] = i;
-					return returnArray;
 				}
 			}
 			listPointer++;
 		}
 
 		if (listIndexSolution[0] != -1) {
-			returnArray[0] = listIndexSolution[0];
-			returnArray[1] = listIndexSolution[1];
+			returnArray[0] = list[listIndexSolution[0]];
+			returnArray[1] = list[listIndexSolution[1]];
 			return returnArray;
 		}
 
