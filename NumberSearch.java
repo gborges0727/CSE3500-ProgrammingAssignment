@@ -39,6 +39,9 @@ public class NumberSearch {
 		if (solution1 != null) {
 			System.out.println(solution1[0] + " and " + solution1[1] + " add to your desired number and exist in the list.");
 			System.out.println("Run time for bruteForce = " + bruteForceRunTime + " in nano-seconds or "  + (bruteForceRunTime / 1000000000.0) + " seconds");
+		} else {
+			System.out.println("No solution was detected! :(");
+			System.out.println("Run time for bruteForce = " + bruteForceRunTime + " in nano-seconds or "  + (bruteForceRunTime / 1000000000.0) + " seconds");
 		}
 
 		// Run binarySearch solution on the list
@@ -48,6 +51,9 @@ public class NumberSearch {
 		long binarySearchRunTime = binarySearchEndTime - binarySearchStartTime;
 		if (solution2 != null) {
 			System.out.println(solution2[0] + " and " + solution2[1] + " add to your desired number and exist in the list.");
+			System.out.println("Run time for binarySearch = " + binarySearchRunTime + " in nano-seconds or " + (binarySearchRunTime / 1000000000.0) + " seconds");
+		} else {
+			System.out.println("No solution was detected! :(");
 			System.out.println("Run time for binarySearch = " + binarySearchRunTime + " in nano-seconds or " + (binarySearchRunTime / 1000000000.0) + " seconds");
 		}
 	}
