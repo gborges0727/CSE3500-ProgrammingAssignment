@@ -9,14 +9,15 @@ public class NumberSearch {
 	public static void main(String[] args) {
 
 		Integer desiredNumber = 99832;
-		List<Integer> integers = new ArrayList<>();
+		List<Integer> solutionIntegers = new ArrayList<>();
+		List<Integer> listIntegers = new ArrayList<>();
 
 		try {
-			File file = new File("CollectionNumbers/listNumbers-10000.txt");
-			Scanner scanner = new Scanner(file);
+			File file1 = new File("CollectionNumbers/listNumbers-10000-nsol.txt");
+			Scanner scanner = new Scanner(file1);
 			while (scanner.hasNext()) {
     			if (scanner.hasNextInt()) {
-        			integers.add(scanner.nextInt());
+        			solutionIntegers.add(scanner.nextInt());
     			} else {
         			scanner.next();
     			}
@@ -25,15 +26,35 @@ public class NumberSearch {
 			e.printStackTrace();
 		}
 
-		// Parse from list into an array
-		int integerArray[] = new int[integers.size()];
-		for (int i = 0; i < integers.size(); i++) {
-			integerArray[i] = integers.get(i);
+		try {
+			File file2 = new File("CollectionNumbers/listNumbers-10000.txt");
+			Scanner scanner = new Scanner(file2);
+			while (scanner.hasNext()) {
+    			if (scanner.hasNextInt()) {
+        			listIntegers.add(scanner.nextInt());
+    			} else {
+        			scanner.next();
+    			}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// Parse from integerList into listArray
+		int listArray[] = new int[listIntegers.size()];
+		for (int i = 0; i < listIntegers.size(); i++) {
+			listArray[i] = listIntegers.get(i);
+		}
+
+		// Parse from solutionIntegers into solutionArray
+		int solutionArray[] = new int[solutionIntegers.size()];
+		for (int i = 0; i < solutionIntegers.size(); i++) {
+			solutionArray[i] = solutionIntegers.get(i);
 		}
 
 		// Run bruteForce solution on the list
 		long bruteForceStartTime = System.nanoTime();
-		int[] solution1 = bruteForce(integerArray, desiredNumber);
+		int[] solution1 = bruteForce(listArray, desiredNumber);
 		long bruteForceEndTime = System.nanoTime();
 		long bruteForceRunTime = bruteForceEndTime - bruteForceStartTime;
 		if (solution1 != null) {
@@ -46,7 +67,7 @@ public class NumberSearch {
 
 		// Run binarySearch solution on the list
 		long binarySearchStartTime = System.nanoTime();
-		int[] solution2 = binarySearch(integerArray, desiredNumber);
+		int[] solution2 = binarySearch(listArray, desiredNumber);
 		long binarySearchEndTime = System.nanoTime();
 		long binarySearchRunTime = binarySearchEndTime - binarySearchStartTime;
 		if (solution2 != null) {
