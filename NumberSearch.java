@@ -8,7 +8,6 @@ public class NumberSearch {
 
 	public static void main(String[] args) {
 
-		Integer desiredNumber = 99832;
 		List<Integer> solutionIntegers = new ArrayList<>();
 		List<Integer> listIntegers = new ArrayList<>();
 
@@ -54,29 +53,34 @@ public class NumberSearch {
 
 		// Run bruteForce solution on the list
 		long bruteForceStartTime = System.nanoTime();
-		int[] solution1 = bruteForce(listArray, desiredNumber);
+		for (int i = 0; i < solutionIntegers.size(); i++) {
+			int desiredNumber = solutionIntegers.get(i);
+			int[] solution1 = bruteForce(listArray, desiredNumber);
+			if (solution1 != null) {
+				System.out.println(solution1[0] + " and " + solution1[1] + " add to " + desiredNumber + " and exist in the list.");
+			} else {
+				System.out.println("No solution found in the list for: " + desiredNumber);
+			}
+		}
 		long bruteForceEndTime = System.nanoTime();
 		long bruteForceRunTime = bruteForceEndTime - bruteForceStartTime;
-		if (solution1 != null) {
-			System.out.println(solution1[0] + " and " + solution1[1] + " add to your desired number and exist in the list.");
-			System.out.println("Run time for bruteForce = " + bruteForceRunTime + " in nano-seconds or "  + (bruteForceRunTime / 1000000000.0) + " seconds");
-		} else {
-			System.out.println("No solution was detected! :(");
-			System.out.println("Run time for bruteForce = " + bruteForceRunTime + " in nano-seconds or "  + (bruteForceRunTime / 1000000000.0) + " seconds");
-		}
-
+		System.out.println("Run time for bruteForce = " + bruteForceRunTime + " in nano-seconds or "  + (bruteForceRunTime / 1000000000.0) + " seconds");
+		System.out.println();
+		
 		// Run binarySearch solution on the list
 		long binarySearchStartTime = System.nanoTime();
-		int[] solution2 = binarySearch(listArray, desiredNumber);
+		for (int i = 0; i < solutionIntegers.size(); i++) {
+			int desiredNumber = solutionIntegers.get(i);
+			int[] solution1 = binarySearch(listArray, desiredNumber);
+			if (solution1 != null) {
+				System.out.println(solution1[0] + " and " + solution1[1] + " add to " + desiredNumber + " and exist in the list.");
+			} else {
+				System.out.println("No solution found in the list for: " + desiredNumber);
+			}
+		}
 		long binarySearchEndTime = System.nanoTime();
 		long binarySearchRunTime = binarySearchEndTime - binarySearchStartTime;
-		if (solution2 != null) {
-			System.out.println(solution2[0] + " and " + solution2[1] + " add to your desired number and exist in the list.");
-			System.out.println("Run time for binarySearch = " + binarySearchRunTime + " in nano-seconds or " + (binarySearchRunTime / 1000000000.0) + " seconds");
-		} else {
-			System.out.println("No solution was detected! :(");
-			System.out.println("Run time for binarySearch = " + binarySearchRunTime + " in nano-seconds or " + (binarySearchRunTime / 1000000000.0) + " seconds");
-		}
+		System.out.println("Run time for binarySearch = " + binarySearchRunTime + " in nano-seconds or " + (binarySearchRunTime / 1000000000.0) + " seconds");
 	}
 
 	public static int[] bruteForce(int[] list, int checkNum) {
